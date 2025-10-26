@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<!-- File: tools.html - Hosts interactive tools (Pomodoro, Planner, Focus Music) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Tools & Resources - StudySmart</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tools page specific styles */
+        .tools-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .tool-section {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-section h2 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        /* Pomodoro Timer */
+        .pomodoro-container {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .timer-display {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            color: var(--text-color);
+        }
+        
+        .timer-controls button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: filter 0.3s;
+        }
+        
+        .timer-controls button:hover {
+            filter: brightness(0.95);
+        }
+        
+        .timer-mode {
+            margin: 1rem 0;
+        }
+        
+        .timer-mode button {
+            background-color: #ecf0f1;
+            color: var(--text-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: filter 0.3s;
+        }
+        
+        .timer-mode button.active {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 6px 16px rgba(59,130,246,0.18);
+        }
+
+        /* Pomodoro ring and badges */
+        .timer-visual { 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            flex-direction:column; 
+            gap:0.75rem; 
+            margin: 0.5rem 0 1rem; 
+        }
+        .ring-wrapper { 
+            position:relative; 
+            width: 180px; 
+            height: 180px; 
+            display:grid; 
+            place-items:center; 
+        }
+        .progress-ring { 
+            transform: rotate(-90deg); 
+        }
+        .progress-ring .ring-bg { 
+            fill: none; 
+            stroke: var(--text-light); 
+            opacity: 0.25; 
+            stroke-width: 10; 
+        }
+        .progress-ring .ring-progress { 
+            fill: none; 
+            stroke: var(--primary-color); 
+            stroke-width: 8; 
+            stroke-linecap: round; 
+            transition: stroke-dashoffset .5s ease; 
+        }
+        .timer-display { 
+            position: absolute; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            color: var(--text-color); 
+            margin: 0; 
+        }
+        .mode-badge { 
+            display:inline-flex; 
+            align-items:center; 
+            gap:0.5rem; 
+            padding: 0.35rem 0.6rem; 
+            border-radius: 999px; 
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%); 
+            color: #fff; 
+            font-size: 0.85rem; 
+            box-shadow: 0 8px 20px rgba(59,130,246,0.15); 
+        }
+        .pomodoro-meta { 
+            margin-top: 0.5rem; 
+            color: var(--text-light); 
+            font-size: 0.95rem; 
+        }
+        .timer-controls button { 
+            border-radius: 999px; 
+            padding: 0.6rem 1rem; 
+            box-shadow: 0 8px 24px rgba(59,130,246,0.18); 
+        }
+        .timer-controls button:disabled { 
+            opacity: 0.7; 
+            cursor: not-allowed; 
+        }
+        .timer-controls button + button { 
+            margin-left: 0.25rem; 
+        }
+        .timer-mode { 
+            display: inline-flex; 
+            gap: 0.5rem; 
+            background: rgba(59,130,246,0.08); 
+            padding: 0.35rem; 
+            border-radius: 999px; 
+        }
+        .timer-mode button { 
+            border-radius: 999px; 
+        }
+        
+        /* Study Planner */
+        .planner-container {
+            padding: 1rem 1.25rem;
+            background: linear-gradient(180deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02));
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(59,130,246,0.12);
+        }
+        .planner-form {
+            margin-bottom: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.6rem;
+            align-items: center;
+        }
+        .planner-form h3 { 
+            grid-column: 1 / -1; 
+            margin: 0.25rem 0 0.5rem; 
+            color: var(--text-color); 
+        }
+        .planner-form input, .planner-form select {
+            padding: 0.6rem 0.7rem;
+            border: 1px solid rgba(59,130,246,0.25);
+            border-radius: 8px;
+            background: #fff;
+            color: var(--text-color);
+            outline: none;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .planner-form input:focus, .planner-form select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+        }
+        .planner-form .btn { 
+            justify-self: start; 
+        }
+        
+        .planner-tasks h3 { 
+            margin: 0.5rem 0; 
+            color: var(--text-color); 
+        }
+        .planner-controls { 
+            display: flex; 
+            gap: 0.5rem; 
+            margin-bottom: 0.75rem; 
+        }
+        
+        .planner-list { 
+            list-style: none; 
+            padding: 0; 
+        }
+        .empty-state {
+            border: 1px dashed rgba(59,130,246,0.35);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            color: var(--text-light);
+            background: rgba(59,130,246,0.06);
+        }
+        
+        /* Task cards produced by JS */
+        .task-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 0.75rem 0.9rem;
+            margin-bottom: 0.6rem;
+            box-shadow: 0 10px 24px rgba(59,130,246,0.10);
+            border: 1px solid rgba(59,130,246,0.15);
+        }
+        .task-item.completed { 
+            opacity: 0.75; 
+        }
+        .task-header {
+            display: grid;
+            grid-template-columns: 28px 1fr auto;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .task-checkbox input { 
+            width: 18px; 
+            height: 18px; 
+            accent-color: var(--primary-color); 
+        }
+        .task-title { 
+            font-weight: 600; 
+            color: var(--text-color); 
+        }
+        .task-actions { 
+            display: inline-flex; 
+            gap: 0.35rem; 
+        }
+        .task-actions button {
+            border: none;
+            background: rgba(59,130,246,0.10);
+            color: var(--text-color);
+            border-radius: 8px;
+            padding: 0.35rem 0.5rem;
+            cursor: pointer;
+            transition: filter 0.2s ease, transform 0.1s ease;
+        }
+        .task-actions button:hover { 
+            filter: brightness(0.95); 
+            transform: translateY(-1px); 
+        }
+        .task-actions .delete-task { 
+            color: #ef4444; 
+            background: rgba(239,68,68,0.10); 
+        }
+        .task-details {
+            margin-top: 0.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.4rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        .task-priority { 
+            font-weight: 600; 
+        }
+        .priority-high { 
+            color: #ef4444; 
+        }
+        .priority-medium { 
+            color: #f59e0b; 
+        }
+        .priority-low { 
+            color: #10b981; 
+        }
+        
+        /* Keep legacy planner-item styles for compatibility */
+        .planner-item { 
+            background-color: #fff; 
+            border-radius: 12px; 
+            padding: 0.75rem 0.9rem;
+            margin-bottom: 0.6rem; 
+            box-shadow: 0 10px 24px rgba(59,130,246,0.10); 
+        }
+        .planner-item-actions button { 
+            background: rgba(59,130,246,0.10); 
+            border: none; border-radius: 8px; 
+            color: var(--text-color); 
+            padding: 0.35rem 0.5rem; 
+            cursor: pointer; 
+        }
+        .planner-item-actions button.delete { 
+            color: #ef4444; 
+            background: rgba(239,68,68,0.10); 
+        }
+        /* Removed duplicate legacy planner styles to prevent overriding themed variants */
+        
+        /* Focus Music Player */
+        .music-container {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            background: linear-gradient(180deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02));
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(59,130,246,0.12);
+        }
+        .music-player {
+            background: #fff;
+            border: 1px solid rgba(59,130,246,0.15);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            box-shadow: 0 10px 24px rgba(59,130,246,0.10);
+            display: grid;
+            gap: 0.75rem;
+        }
+        .now-playing p { 
+            margin: 0; 
+            color: var(--text-light); 
+        }
+        .now-playing #current-track-title { 
+            font-weight: 600; 
+            color: var(--text-color); 
+        }
+        .music-controls { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 0.5rem; 
+            margin: 0.75rem 0; 
+        }
+        .music-controls button {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            box-shadow: 0 8px 20px rgba(59,130,246,0.18);
+            cursor: pointer;
+            transition: filter 0.2s ease, transform 0.1s ease;
+        }
+        .music-controls button:hover { 
+            filter: brightness(0.95); 
+            transform: translateY(-1px); 
+        }
+        .volume-control { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 0.5rem; 
+        }
+        .volume-control label { 
+            color: var(--text-light); 
+        }
+        .volume-control input[type="range"] { 
+            width: 220px; 
+            accent-color: var(--primary-color); 
+        } 
+        .music-playlist { 
+            margin-top: 1rem; 
+        }
+        .music-playlist h3 { 
+            margin: 0.25rem 0 0.6rem; 
+            color: var(--text-color); 
+        }
+        .music-playlist { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+            gap: 0.5rem; 
+        }
+        /* Track buttons */
+        .track-button {
+            background: rgba(59,130,246,0.08);
+            border: 1px solid rgba(59,130,246,0.25);
+            color: var(--text-color);
+            border-radius: 10px;
+            padding: 0.6rem 0.75rem;
+            cursor: pointer;
+            transition: filter 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.08);
+            text-align: center;
+        }
+        .track-button:hover { 
+            filter: brightness(0.97); 
+            transform: translateY(-1px); 
+        }
+        .track-button:focus { 
+            outline: none; 
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.15); 
+        }
+        .track-button.active {
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: #fff;
+            border: none;
+            box-shadow: 0 10px 24px rgba(59,130,246,0.18);
+        }
+        
+        /* Legacy list item compatibility */
+        .music-playlist-item { 
+            padding: 0.5rem; 
+            cursor: pointer; 
+            border-radius: 10px; 
+            transition: background-color 0.3s; 
+        }
+        .music-playlist-item:hover { 
+            background-color: #f5f5f5; 
+        }
+        .music-playlist-item.active { 
+            background-color: #e0f7fa; 
+            font-weight: 600; 
+        }
+
+        /* Resources Grid */
+        .resources-section { 
+            margin-top: 2rem;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .resource-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .resource-thumb {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .resource-content { 
+            padding: 1rem; 
+        }
+        .resource-content h3 { 
+            margin: 0.25rem 0; 
+            color: var(--text-color); 
+        }
+        .resource-content p { 
+            color: var(--text-light); 
+            font-size: 0.95rem;
+        }
+        .resource-content .btn { 
+            margin-top: 0.5rem; 
+        
+        }
+        /* Thumb brand colors */
+        .resource-thumb.notion { 
+            background: #dcd3ae; 
+        }
+        .resource-thumb.forest { 
+            background: #2f5233; 
+            color: #fff; 
+        }
+        .resource-thumb.zotero { 
+            background: #f5f5f5; 
+        }
+        .resource-thumb.anki { 
+            background: #083c3e; 
+            color: #fff; 
+        }
+        .resource-thumb.miro { 
+            background: #f8d9c0; 
+        }
+        .resource-thumb.grammarly { 
+            background: #e9f5f2; 
+        }
+
+        /* Modal (Study Planner) */
+        .modal { 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0,0,0,0.4); 
+            display: none; 
+            align-items: center; 
+            justify-content: center; 
+            z-index: 1000; 
+        }
+        .modal.show { 
+            display: flex; 
+        }
+        .modal .modal-content { 
+            background: #fff; 
+            border-radius: 8px; 
+            padding: 1rem 1.25rem; 
+            width: 100%; 
+            max-width: 520px; 
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+        }
+        .modal .close-modal { 
+            background: transparent; 
+            border: none; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            float: right; 
+        }
+        .modal .form-row { 
+            margin: 0.5rem 0; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .modal .form-row input, .modal .form-row select { 
+            padding: 0.5rem; 
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Go to Home">
+                <img src="images/logo.svg" alt="StudySmart Logo" class="logo-img">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="techniques.html">Study Techniques</a></li>
+                    <li><a href="tools.html" class="active">Study Tools</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1>Study Tools & Resources</h1>
+                <p>Boost your productivity with our collection of interactive study tools designed to help you study smarter, not harder.</p>
+            </div>
+        </section>
+
+        <div class="tools-container">
+            <!-- Pomodoro Timer -->
+            <section class="tool-section" id="pomodoro">
+                <h2><i class="fas fa-clock"></i> Pomodoro Timer</h2>
+                <p>The Pomodoro Technique is a time management method that uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks.</p>
+                
+                <div class="pomodoro-container" id="pomodoro-timer-container">
+                    <div class="timer-mode" role="tablist" aria-label="Timer mode">
+                        <button id="pomodoro-mode" class="active" data-mode="pomodoro" role="tab" aria-selected="true"><i class="fas fa-fire"></i> Pomodoro</button>
+                        <button id="short-break-mode" data-mode="shortBreak" role="tab" aria-selected="false"><i class="fas fa-mug-hot"></i> Short Break</button>
+                        <button id="long-break-mode" data-mode="longBreak" role="tab" aria-selected="false"><i class="fas fa-leaf"></i> Long Break</button>
+                    </div>
+
+                    <div class="timer-visual">
+                        <div class="ring-wrapper" aria-hidden="true">
+                            <svg class="progress-ring" width="180" height="180" viewBox="0 0 120 120">
+                                <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="ring-progress" cx="60" cy="60" r="54"></circle>
+                            </svg>
+                            <div id="timer-display" class="timer-display" aria-live="polite">25:00</div>
+                        </div>
+                        <div class="mode-badge" id="mode-badge" aria-label="Current mode">Pomodoro</div>
+                    </div>
+
+                    <div class="timer-controls" aria-label="Timer controls">
+                        <button id="start-timer" aria-controls="timer-display"><i class="fas fa-play"></i> Start</button>
+                        <button id="pause-timer" disabled aria-controls="timer-display"><i class="fas fa-pause"></i> Pause</button>
+                        <button id="reset-timer" aria-controls="timer-display"><i class="fas fa-redo"></i> Reset</button>
+                    </div>
+
+                    <div class="pomodoro-meta">
+                        <div class="session-info">Completed: <span id="pomodoro-count">0</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Study Planner -->
+            <section class="tool-section" id="planner">
+                <h2><i class="fas fa-calendar-alt"></i> Study Planner</h2>
+                <p>Plan your study sessions, set goals, and track your progress with our interactive study planner.</p>
+                
+                <div id="study-planner-container" class="planner-container">
+                    <form id="new-task-form" class="planner-form">
+                        <h3>Add Study Task</h3>
+                        <input type="text" id="task-title" placeholder="Task title" required>
+                        <input type="text" id="task-subject" placeholder="Subject" required>
+                        <input type="date" id="task-due-date" required>
+                        <select id="task-priority">
+                            <option value="low">Low Priority</option>
+                            <option value="medium" selected>Medium Priority</option>
+                            <option value="high">High Priority</option>
+                        </select>
+                        <input type="number" id="task-time" placeholder="Est. time (min)" min="0">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add Task</button>
+                    </form>
+                    
+                    <div class="planner-tasks">
+                        <h3>Your Study Tasks</h3>
+                        <div class="planner-controls">
+                            <button id="filter-by-date" class="btn btn-secondary"><i class="fas fa-sort-numeric-down"></i> Sort by Due Date</button>
+                            <button id="filter-by-priority" class="btn btn-secondary"><i class="fas fa-exclamation-circle"></i> Group by Priority</button>
+                        </div>
+                        <div class="planner-list" id="tasks-list">
+                            <!-- Tasks will be added here dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Edit Task Modal: handles in-place edits for planner tasks -->
+                    <div id="edit-task-modal" class="modal">
+                        <div class="modal-content">
+                            <button type="button" class="close-modal">&times;</button>
+                            <h3>Edit Task</h3>
+                            <form id="edit-task-form">
+                                <input type="hidden" id="edit-task-id">
+                                <input type="text" id="edit-task-title" placeholder="Task title" required>
+                                <input type="text" id="edit-task-subject" placeholder="Subject" required>
+                                <input type="date" id="edit-task-due-date" required>
+                                <select id="edit-task-priority">
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                                <input type="number" id="edit-task-time" placeholder="Est. time (min)" min="0">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Focus Music Player -->
+            <section class="tool-section" id="music">
+                <h2><i class="fas fa-music"></i> Focus Music</h2>
+                <p>Enhance your concentration with our collection of focus-enhancing background music.</p>
+                
+                <div id="music-player-container" class="music-container">
+                    <div class="music-player">
+                        <div class="now-playing">
+                            <p>Now Playing: <span id="current-track-title">No track selected</span></p>
+                        </div>
+                        <div class="music-controls">
+                            <button id="play-pause-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="volume-control">
+                            <label for="volume-slider">Volume:</label>
+                            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.7">
+                        </div>
+                    </div>
+                    
+                    <div class="music-playlist">
+                        <h3>Playlist</h3>
+                        <button class="track-button" data-track-id="1">Deep Focus</button>
+                        <button class="track-button" data-track-id="2">Ambient Study</button>
+                        <button class="track-button" data-track-id="3">Nature Sounds</button>
+                        <button class="track-button" data-track-id="4">White Noise</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Study Resources -->
+            <section class="tool-section resources-section" id="resources">
+                <h2><i class="fas fa-link"></i> Study Resources</h2>
+                <p>Curated tools and platforms to support your learning.</p>
+
+                <div class="resources-grid">
+                    <article class="resource-card">
+                        <div class="resource-thumb notion">Notion</div>
+                        <div class="resource-content">
+                            <h3>Notion</h3>
+                            <p>An all-in-one workspace for your notes, tasks, and wikis.</p>
+                            <a href="https://www.notion.so/" target="_blank" rel="noopener" class="btn btn-primary">Visit</a>
+                        </div>
+                    </article>
+                    <article class="resource-card">
+                        <div class="resource-thumb forest">Forest App</div>
+                        <div class="resource-content">
+                            <h3>Forest App</h3>
+                            <p>Stay focused and plant virtual trees to build a productive habit.</p>
+                            <a href="https://www.forestapp.cc/" target="_blank" rel="noopener" class="btn btn-primary">Visit</a>
+                        </div>
+                    </article>
+                    <article class="resource-card">
+                        <div class="resource-thumb zotero">Zotero</div>
+                        <div class="resource-content">
+                            <h3>Zotero</h3>
+                            <p>A free, easy-to-use tool to help you collect, organize, cite, and share research.</p>
+                            <a href="https://www.zotero.org/" target="_blank" rel="noopener" class="btn btn-primary">Visit</a>
+                        </div>
+                    </article>
+                    <article class="resource-card">
+                        <div class="resource-thumb anki">Anki</div>
+                        <div class="resource-content">
+                            <h3>Anki</h3>
+                            <p>A powerful flashcard program that makes remembering things easy.</p>
+                            <a href="https://apps.ankiweb.net/" target="_blank" rel="noopener" class="btn btn-primary">Visit</a>
+                        </div>
+                    </article>
+                    <article class="resource-card">
+                        <div class="resource-thumb miro">Miro</div>
+                        <div class="resource-content">
+                            <h3>Miro</h3>
+                            <p>The online collaborative whiteboard platform to bring teams together.</p>
+                            <a href="https://miro.com/" target="_blank" rel="noopener" class="btn btn-primary">Visit</a>
+                        </div>
+                    </article>
+                    <article class="resource-card">
+                        <div class="resource-thumb grammarly">Grammarly</div>
+                        <div class="resource-content">
+                            <h3>Grammarly</h3>
+                            <p>Your writing assistant offering suggestions to help you improve your writing.</p>
+                            <a href="https://www.grammarly.com/" target="_blank" rel="noopener" class="btn btn-primary">Visit</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>StudySmart</h2>
+                    <p>Study Smarter, Not Harder</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="techniques.html">Study Techniques</a></li>
+                            <li><a href="tools.html">Study Tools</a></li>
+                            <li><a href="profile.html">My Profile</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="https://www.notion.so/" target="_blank" rel="noopener">Notion</a></li>
+                            <li><a href="https://www.forestapp.cc/" target="_blank" rel="noopener">Forest App</a></li>
+                            <li><a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a></li>
+                            <li><a href="https://apps.ankiweb.net/" target="_blank" rel="noopener">Anki</a></li>
+                            <li><a href="https://miro.com/" target="_blank" rel="noopener">Miro</a></li>
+                            <li><a href="https://www.grammarly.com/" target="_blank" rel="noopener">Grammarly</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Get Started</h3>
+                        <ul>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="signup.html">Signup</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 StudySmart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

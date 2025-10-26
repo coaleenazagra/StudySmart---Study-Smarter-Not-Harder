@@ -1,0 +1,1523 @@
+/* Global CSS Variables */
+
+/* The :root selector targets the highest-level element in the HTML document (<html>), making the defined variables globally accessible. */
+:root {
+    /* Color Palette: Defines the main colors for the design, including a primary blue, a secondary pink accent, two text shades, and two background shades. These names make it easy to change the entire site's branding quickly. */
+    --primary-color: #3b82f6;    /* Main brand blue */
+    --secondary-color: #ff6bc1;  /* Accent pink */
+    --accent-color: #7e5bef;     /* Tertiary purple */
+    --text-color: #333333;       /* Primary text */
+    --text-light: #666666;       /* Secondary text */
+    --background-color: #ffffff; /* Main background */
+    --background-alt: #f8f9fa;   /* Alternative background */
+    --border-color: #e1e4e8;     /* Border color */
+    
+    /* Feedback Colors: Defines standard colors for communicating status (success, warning, error), often used for alerts or validation messages. */
+    --success-color: #28a745;    /* Success messages */
+    --warning-color: #ffc107;    /* Warning messages */
+    --danger-color: #dc3545;     /* Error messages */
+    
+    /* Common Properties: Defines reusable values for shadows, corner rounding, and transitions (smooth visual changes). --header-bg and --blur are designed for a common "glassmorphism" or fixed header effect. */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+    --header-bg: rgba(255, 255, 255, 0.85);
+    --blur: saturate(180%) blur(12px);
+}
+
+/* Universal Reset (*): Removes all default margins and padding set by the browser (a common practice to start from a clean slate). box-sizing: border-box; ensures that padding and borders do not increase the element's total width and height, simplifying layout calculations. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles: Sets the default font ('Poppins'), text color, line height, and uses the defined CSS variable for the main background color. */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--background-color);
+}
+
+/* Layout Utility: Defines a reusable class for centering content on the page. It sets a maximum width of 1200px and uses margin: 0 auto to center the block. padding: 0 20px adds space on the sides for smaller screens. */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Link Styles: Removes the default underline (text-decoration: none;), applies the --primary-color, and uses the defined --transition variable for a smooth color change on hover(Mouse Interaction) to the --secondary-color. */
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+a:hover { 
+    color: var(--secondary-color);
+}
+
+/* List Reset: Removes the default bullets from unordered lists. */
+ul {
+    list-style: none;
+}
+
+/* Image Scaling: Ensures images are fully responsive by preventing them from exceeding the width of their container while maintaining their aspect ratio. */ 
+ img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Base Title: Styles the text itself: large font size (2.5rem), centered alignment, bottom margin, and uses position: relative to serve as the anchor for the decorative line created below. */ 
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Decorative Underline: Uses the :after pseudo-element to draw a custom line beneath the title. content: ''; makes the element visible. It is positioned absolutely at the bottom center (left: 50%; transform: translateX(-50%);). The line is given a width, height, and a gradient background using the primary and secondary colors. */ 
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+
+/* Button Styles */ 
+
+/* Defines the appearance of all button elements across the site */
+.btn {
+    /* Allows the button to accept set padding and sizing, while remaining flowable with surrounding text. */
+    display: inline-block;
+    /* Sets comfortable internal spacing. */
+    padding: 12px 24px;
+    /* Rounds the button corners using a global variable. */
+    border-radius: var(--border-radius);
+    /* Makes the text medium-weight (semi-bold) for readability. */
+    font-weight: 500;
+    /* This property is applied to a block-level element to horizontally center all inline content (text, images, links) inside of it. */
+    text-align: center;
+    /* Changes the mouse cursor to a pointing hand on hover, indicating interactivity. */
+    cursor: pointer;
+    /* Applies a smooth animation to style changes for a polished feel. */
+    transition: var(--transition);
+    /* Removes default browser borders. */
+    border: none;
+    /* Sets a standard, relative font size. */
+    font-size: 1rem;
+}
+
+/* Uses a gradient of the primary and secondary colors and a deep shadow to make it visually "pop" off the background. */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.22);
+}
+
+/* Hover Effect: The button subtly lifts up 2 pixels, and its brightness and shadow intensity increase, providing strong interactive feedback. */
+.btn-primary:hover {
+    filter: brightness(1.05);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(59, 130, 246, 0.28);
+}
+
+/* Uses a solid background color from the global accent variable. */
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Hover Effect: It dims slightly (opacity: 0.9) and still includes the subtle vertical lift for a consistent interactive experience across button types. */
+.btn-secondary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    color: white;
+}
+
+/* It has a transparent background and a 2px border and text color that match the primary color. */
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Hover Effect (Color Inversion): The style fills in on hover, using the primary color as the background and changing the text to white for maximum contrast, clearly signaling interaction. */
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+
+/* Header Styles */
+
+/* This section establishes the header's fixed position and the visual effects that create the "translucent with blur" style. */
+header {
+    /* Sets the background to a global variable. */
+    background: var(--header-bg);
+    /* Applies a modern visual effect that blurs the content behind the header (often called "glassmorphism"). */
+    backdrop-filter: var(--blur);
+    /* The -webkit- prefix ensures support for older Chrome/Safari browsers. */
+    -webkit-backdrop-filter: var(--blur);
+    /* Adds a subtle shadow underneath the header for depth and separation from the page content. */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    /* Adds a fine line at the bottom of the header for a clean, defined edge. */
+    border-bottom: 1px solid var(--border-color);
+    /* Makes the header stick to the top of the viewport when the user scrolls, but only within its parent container's flow (though top: 0 makes it effectively fixed at the top of the viewport when scrolling). */
+    position: sticky;
+    /* Ensures the sticky header attaches right at the top edge of the browser window.*/
+    top: 0;
+    /* Puts the header on a high stacking layer so it always appears above other page content as the user scrolls. */
+    z-index: 1000;
+}
+
+/* This section styles the main content container inside the header, typically controlling the logo, navigation, and buttons */
+header .container {
+    /* Enables Flexbox layout, allowing direct control over child alignment and distribution. */
+    display: flex;
+    /* Distributes space evenly between the logo, navigation, and button groups, pushing the first and last items to the edges. */
+    justify-content: space-between;
+    /* Vertically centers the items (like the logo, links, and buttons) within the header's height. */
+    align-items: center;
+    /* Adds vertical padding to define the header's height. */
+    padding: 1rem 20px;
+}
+
+/* Sets a fixed vertical size of 40px and ensures the width maintains the logo's aspect ratio. The transition property ensures that any style change, like the zoom effect on hover, is applied smoothly.. */
+.logo-img {
+    height: 40px;
+    width: auto;
+    transition: var(--transition);
+}
+
+/* The transform: scale(1.05) property makes the logo increase in size by 5% when hovered over, providing visual feedback to the user. */
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* Uses Flexbox (display: flex) to arrange the links horizontally in a row, with 2rem of consistent spacing between them (gap: 2rem). */
+nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Sets the link text color and font-weight to be prominent. The position: relative; property is crucial as it creates a positioning context to anchor the link's underline pseudo-element. */
+nav ul li a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+/* Creates an element (content: '') that is initially hidden by having zero width (width: 0). It is positioned absolutely at the bottom of the link's box and colored with the primary brand color, ready to be animated. */
+nav ul li a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* On hover or when the link is active, the line's width is animated to 100%, causing it to smoothly slide open beneath the link. */
+nav ul li a:hover:after,
+nav ul li a.active:after {
+    width: 100%;
+}
+
+/* This class uses Flexbox (display: flex) to arrange the sign-up and sign-in buttons horizontally in a row, with 1 rem of uniform space (gap: 1rem) between them to keep the group neat and readable.*/
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* TThis class defines the mobile menu toggle icon. It is hidden by default (display: none) for desktop users and will only be shown on small screens via a media query. It is sized appropriately for tapping (font-size: 1.5rem) and uses cursor: pointer to signal that it's clickable. */
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+/* Hero Section */
+/* This is the main container, set up with generous padding and a diagonal background gradient. It is positioned relatively and uses overflow: hidden to clip the decorative elements that are placed just outside its borders. */
+.hero {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--background-alt), rgba(126, 91, 239, 0.08));
+    overflow: hidden;
+    position: relative;
+}
+
+/* These two pseudo-elements create large, heavily blurred (soft) circles with radial gradients in the background. They are positioned absolutely in the corners (one top-left, one bottom-right) and given a low opacity and z-index so they appear as subtle, glowing ambient light effects behind the main content. */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50;
+    filter: blur(40px);
+    opacity: 0.35;
+    z-index: 0;
+}
+
+/* This structure uses CSS Grid to create a two-column layout (1fr 1fr), dividing the space equally between the text content and the image. The content is vertically centered within the section (align-items: center). */
+.hero::before {
+    background: radial-gradient(circle at center, var(--secondary-color), transparent 60%);
+    top: -60px;
+    left: -60px;
+}
+.hero::after {
+    background: radial-gradient(circle at center, var(--accent-color), transparent 60%);
+    bottom: -60px;
+    right: -60px;
+}
+
+/* This structure uses CSS Grid to create a two-column layout (1fr 1fr), dividing the space equally between the text content and the image. The content is vertically centered within the section (align-items: center). */
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* Styles the text with large, prominent headings and readable descriptive paragraphs. */
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+/* Uses Flexbox to arrange the call-to-action buttons horizontally with 1 rem of space between them. */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Enters the image horizontally within its column. */
+.hero-image {
+    text-align: center
+}
+
+/* Ensures the image is fully responsive (max-width: 100%) and applies a custom float animation to make the image gently bob up and down continuously, adding subtle dynamism to the section. */
+.hero-image img {
+    max-width: 100%;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* This CSS code block defines a simple keyframe animation named float that makes an element gently move up and down vertically. */
+/* Starts the definition of a custom animation named float. */
+@keyframes float {
+    /* Defines the styles at the start of the animation cycle. */
+    0% {
+        /* Sets the element's vertical position to its original starting point (no offset). */
+        transform: translateY(0px);
+    }
+    /* Defines the styles at the midpoint of the animation cycle. */
+    50% {
+        /* Moves the element 20 pixels upwards 20px in the negative Y direction) from its starting position. This creates the "float up" effect. */
+        transform: translateY(-20px);
+    }
+    /* Defines the styles at the end of the animation cycle. */
+    100% {
+        /* Returns the element's vertical position back to its original starting point. */
+        transform: translateY(0px);
+    }
+}
+
+
+/* Features Section */
+
+/* The main section container, providing ample vertical padding and setting the base background color. */
+.features {
+    padding: 5rem 0;
+    background-color: var(--background-color);
+}
+
+/* Creates a responsive grid layout using repeat(auto-fit, minmax(250px, 1fr)), automatically fitting feature cards that are at least 250px wide, with rem spacing (gap). */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* Styles the individual card with a contrasting background, rounding the corners, centering the content, and applying a shadow. The :hover state makes the card lift up 10px (transform: translateY(-10px)) and intensifies the shadow for a strong interactive effect. */
+.feature-card {
+    background-color: var(--background-alt);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles the icon with a large size ($\text{2.5 rem}$) and the primary brand color for visual emphasis. */
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Styles the card's heading and descriptive text, using a lighter color for the paragraph. */
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.feature-card p {
+    color: var(--text-light);
+}
+
+/* Techniques Preview Section */
+/* The container for the second section, providing vertical padding and using the alternate background color to contrast with the features section. */
+.techniques-preview {
+    padding: 5rem 0;
+    background-color: var(--background-alt);
+}
+
+/* Creates a responsive grid similar to features, but with a slightly larger minimum column width of 280px. */
+.techniques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Styles the card using Flexbox (display: flex; flex-direction: column) and height: 100% to ensure all cards stretch to the same height regardless of content length. The :hover state provides a subtle 5px lift. */
+.technique-card {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 0;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.technique-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles the card content, notably using flex-grow: 1 on the paragraph to ensure it fills any available vertical space, maintaining consistent card height across the row. */
+.technique-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+.technique-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+/* Technique card image-first layout */
+
+/* Styles the image wrapper (the "thumbnail" area). It sets a fixed height of 180px and uses border-radius to only round the top corners. overflow: hidden ensures the image stays within these rounded boundaries. It uses Flexbox to center any content inside (though the image will fill it). */
+.technique-thumb {
+    height: 180px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--background-alt), rgba(126, 91, 239, 0.08));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensures the image covers the entire thumbnail area (width: 100%; height: 100%) and uses object-fit: cover to crop the image as needed while maintaining its aspect ratio and filling the space. */
+.technique-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Styles the area below the image. It uses padding for internal spacing, Flexbox to arrange content vertically with 0.5rem space between elements (gap), and flex: 1 to make it grow and fill the remaining vertical space of the card (ensuring uniform card height). */
+.technique-content {
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+/* Forces any button within the technique card to span the full width of the content area (width: 100%). */
+.technique-card .btn {
+    width: 100%;
+}
+
+/* Simply centers the text within the element, typically used for a "View All..." button or link below the grid. */
+.view-all {
+    text-align: center;
+}
+
+/* Tools Preview Section */
+
+/* The main section container, providing generous vertical padding and setting the primary site background color. */
+.tools-preview {
+    padding: 5rem 0;
+    background-color: var(--background-color);
+}
+
+/* Creates a responsive grid layout using repeat(auto-fit, minmax(280px, 1fr)). This means it automatically fits as many columns as possible, with each card having a minimum width of 280px, 2rem spacing (gap). */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Styles the individual tool card. It uses Flexbox (display: flex; flex-direction: column; height: 100%) to ensure all cards stretch to the same height. The card has a contrasting background, padding, and a shadow. */
+.tool-card {
+    background-color: var(--background-alt);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The hover state makes the card lift up 5rem (transform: translateY(-5px)) and slightly increases the shadow, giving subtle interactive feedback. */
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles the icon with a large size 2.5rem and the secondary brand color for visual differentiation from other sections. */
+.tool-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Styles the tool's title with a clear font size of 1.5rem and adds a 1rem space below it, separating it from the descriptive paragraph. */
+.tool-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Styles the descriptive text. It sets the text color to a lighter shade (--text-light) for contrast and adds a 1.5rem space below the text. Crucially, flex-grow: 1 is used to make this paragraph element expand and fill all available vertical space within the card, ensuring all tool cards in the grid maintain a uniform height. */
+.tool-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Testimonials Section */
+
+/* Sets generous vertical padding 5rem and uses the alternate background color (--background-alt) for visual contrast with adjacent sections. */
+.testimonials {
+    padding: 5rem 0;
+    background-color: var(--background-alt);
+}
+
+/* Acts as the viewport for the testimonials. It has a maximum width of 800px and is centered (margin: 0 auto). position: relative is for positioning slider controls, and overflow: hidden is necessary to hide testimonials that are currently off-screen. */
+.testimonials-slider {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Styles the card with a solid background, rounded corners, and a box-shadow for a lifted appearance. The margin: 1rem provides spacing around the card, which is often crucial for slider implementations. */
+.testimonial {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin: 1rem;
+}
+
+/* Styles the review text: it is slightly larger 1rem, italicized, and colored with a lighter text shade. position: relative is used to correctly position the large opening quote symbol. */
+.testimonial-content {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* Creates a large, stylized opening quotation mark (") using a pseudo-element. It is absolutely positioned, made translucent (opacity: 0.2), and colored with the primary brand color for a decorative touch. */
+.testimonial-content:before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+    position: absolute;
+    top: -20px;
+    left: -15px;
+}
+
+/* Uses Flexbox (display: flex) to align the author's image and text information horizontally and vertically centered (align-items: center) with a 1rem space (gap). */
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Styles the author's avatar with a fixed size 60px, makes it a perfect circle (border-radius: 50%, and uses **object-fit: cover`** to ensure the image fills the area correctly without distortion. */
+.testimonial-author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Styles the author's name with a slight margin at the bottom. */
+.author-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+/* Styles the author's title or company with a smaller font size 0.9rem and a lighter text color. */
+.author-info p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Uses Flexbox to horizontally arrange the dots, centers them within the slider area (justify-content: center), and adds a top margin for spacing. */
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+/* Styles the individual navigation dot: it's a small gray circle 12px by 12px 50% radius px and is styled as a clickable element (cursor: pointer). */
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* The active dot (indicating the currently visible testimonial) is highlighted by changing its background color to the primary brand color. */
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+
+/* Call to Action Section */
+
+/* The main container. It uses a gradient background blending the primary and secondary colors, sets the text color to white for maximum contrast, and centers all content (text-align: center). */
+.cta {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+}
+
+/* Styles the main headline with a large font size (2.5rem )) and a bottom margin. */
+.cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Styles the descriptive text, giving it a larger size (1.2rem) and a slight translucency (opacity: 0.9). It is centered horizontally (margin: 0 auto) and given a 700px maximum width for readability. */
+.cta-content p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+}
+
+/* Overrides the default primary button style for the CTA. It uses a white background and the primary color for the text, making it stand out sharply against the gradient background. */
+.cta .btn-primary {
+    background-color: white;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    padding: 15px 30px;
+}
+
+/* The hover state makes the button subtly lift up $3 \text{px}$ (transform: translateY(-3px)) and adds a visible shadow, while the background slightly darkens (rgba(255, 255, 255, 0.9)). */
+.cta .btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Footer */
+
+/* Sets the background to a dark gray (#2a2a2a), sets text to white, and applies generous vertical padding. */
+footer {
+    background-color: #2a2a2a;
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+/* Uses CSS Grid to create the main footer layout: three columns in a $\text{1fr 2fr 1fr}$ ratio (Logo, Links, Social), separated by a 3rem gap. */
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Styles the logo area with a large heading and a slightly translucent paragraph for the tagline. */
+.footer-logo h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+.footer-logo p {
+    opacity: 0.8;
+}
+
+/* Contains the navigation links. It uses a nested Grid layout with three equal columns (repeat(3, 1fr)) to organize links into columns. */
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Styles the heading for link columns. The :after pseudo-element adds a short, 3px thick underline in the primary color, positioned right below the heading text for decoration. */
+.footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+.footer-column h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+.footer-column ul li {
+    margin-bottom: 0.8rem;
+}
+
+/* Styles the individual links with a slight translucency. On :hover, the color becomes pure white, and the link slides right 5px (padding-left: 5px) for a smooth effect. */
+.footer-column ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: var(--transition);
+}
+.footer-column ul li a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.footer-social h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-social h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+/* Uses Flexbox to arrange the social media links horizontally with $1 \text{rem}$ space between them. */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Styles the individual social link button: it's a white circle 40px size, border-radius: 50%, slightly translucent, and uses Flexbox to center the icon inside the circle. */
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: var(--transition); 
+}
+
+/* On hover, the button's background changes to the primary color, and it lifts up 3px (transform: translateY(-3px)) for a dynamic effect. */
+.social-icons a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Contains the copyright info. It's centered and separated from the main content by a thin white line (border-top). The text is smaller (0.9rem) and slightly translucent. */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-bottom p {
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+
+/* Applies styles for screens 1024px or narrower (typical tablet and desktop small breakpoints). */
+@media (max-width: 1024px) {
+    /* Reduces the size of the Hero Section heading slightly for better fit. */
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    /* Changes the main footer layout from three columns to two equal columns (1fr 1fr). */
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Forces the social media column to span both columns in the new $2$-column footer grid. */
+    .footer-social {
+        grid-column: span 2;
+    }
+}
+
+/* Applies styles for screens 768px or narrower (typical phone and large tablet portrait breakpoints). */
+@media (max-width: 768px) {
+    /* The Hero Section layout collapses to a single column and centers all contained text/elements. */
+    .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    /* Sets the Hero text content to appear second in the column stack. */
+    .hero-content {
+        order: 2;
+    }
+    
+    /* Sets the Hero image to appear first in the column stack and adds spacing below it. This places the image above the text. */
+    .hero-image {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+    
+    /* Centers the call-to-action buttons to align with the rest of the centered text. */
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    /* Hides the desktop navigation links. */
+    nav ul {
+        display: none;
+    }
+    
+    /* Shows the mobile menu (hamburger) button. */
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    /* Hides the desktop login/signup buttons to save space. */
+    .auth-buttons {
+        display: none;
+    }
+    
+    /* Collapses the main footer content into a single stacked column. */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* Changes the nested footer links grid to two columns. */
+    .footer-links {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Resets the social media column to its default sizing within the new 1-column layout. */
+    .footer-social {
+        grid-column: auto;
+    }
+}
+
+/* Applies styles for screens 576px or narrower (typical small phone breakpoints). */
+@media (max-width: 576px) {
+    /* Reduces the font size of all main section titles. */
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    /* Further reduces the size of the Hero Section heading. */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    /* Forces all main content grids (features, techniques, tools) to collapse into a single column. */
+    .features-grid,
+    .techniques-grid,
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Collapses the nested footer links grid to a single stacked column. */
+    .footer-links {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Reduces the horizontal padding on the main content container for a better fit on very narrow screens. */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Reduces the font size of the descriptive text in the Hero section. */
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    /* Reduces the padding and font size of all buttons to make them more compact. */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Enhanced Animations and Interactions */
+
+/* Defines the fadeInUp animation. The element starts invisible (opacity: 0) and 30px below its final position, then smoothly animates to be fully visible (opacity: 1) at its intended position (translateY(0)). */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Defines the pulse animation. The element starts and ends at its normal size (scale(1)) but briefly expands by 5% (scale(1.05)) at the 50% mark, creating a subtle breathing or pulsating effect. */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* A utility class that applies the fadeInUp animation over $0.6$ seconds with an ease-out timing function. */
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* A utility class that applies the pulse animation over 2 seconds and repeats it infinitely. */
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+
+/* Enhanced Button Styles */
+
+/* Sets the stage for the effect: position: relative anchors the shine layer, overflow: hidden hides the layer until it moves across, and transform: translateZ(0) is a common technique used to improve hardware acceleration for smooth transitions. */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+/* Creates the shine pseudo-element. It's a vertical gradient with transparent edges and a semi-opaque white middle (rgba(255, 255, 255, 0.2)). It starts completely off-screen to the left (left: -100%) and is set to transition its left property smoothly. */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+/* On hover, the shine element's position moves from -100% to 100%, causing the white gradient band to swipe across the button. */
+.btn:hover::before {
+    left: 100%;
+}
+
+
+/* Enhanced Card Hover Effects */
+
+/* Sets a smooth transition for all properties and establishes position: relative and overflow: hidden to anchor the new hover overlay and keep it within the card's boundaries. */
+.feature-card,
+.technique-card,
+.tool-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Creates a subtle, semi-transparent gradient overlay layer positioned over the entire card. It is initially invisible (opacity: 0) and sits behind the content (z-index: -1). */
+.feature-card::before,
+.technique-card::before,
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+/* On hover, the overlay layer becomes slightly visible (opacity: 0.1), adding a faint color wash to the card. */
+.feature-card:hover::before,
+.technique-card:hover::before,
+.tool-card:hover::before {
+    opacity: 0.1;
+}
+
+/* The main hover effect: the card lifts up 8px (transform: translateY(-8px)) and the shadow is deepened (box-shadow: 0 12px 24px...), providing distinct visual feedback. */
+.feature-card:hover,
+.technique-card:hover,
+.tool-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Loading States */
+
+/* This class is applied to a container element when content is loading. pointer-events: none prevents the user from clicking or interacting with the content while it is loading. */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+/* Creates the spinning loader icon (spinner). It's a absolutely positioned, small, circular border where the top border is transparent, giving it the necessary break. */
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--primary-color);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Defines the animation that continuously rotates the element 360 degrees (transform: rotate(...)), creating the typical loading spinner visual. */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Enhanced Focus States for Accessibility */
+
+/* Enhanced Focus States: This crucial accessibility rule provides a clear, primary-colored 2px outline around interactive elements (buttons, inputs, etc.) when they receive keyboard focus. The outline-offset: 2px ensures the outline doesn't overlap the element's border. */
+.btn:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Smooth Scrolling: Sets scroll-behavior: smooth at the root of the document, enabling an animated scroll transition when a user clicks on an internal anchor link (e.g., #section-id), enhancing user experience. */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Enhanced Mobile Navigation */
+
+/* These rules define the appearance of the navigation menu and login buttons when they are toggled open on mobile screens. */
+@media (max-width: 768px) {
+    /* Styles the primary navigation menu when the .show class is applied (i.e., when the menu is open). It transforms the hidden menu into a full-width, vertical list that is absolutely positioned directly below the header (top: 100%). It has a defined background, shadow, and high z-index to overlay page content. */
+    nav ul.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--background-color);
+        box-shadow: var(--shadow);
+        padding: 1rem;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        z-index: 1000;
+    }
+    
+    /* Adds vertical margin around each link item to improve readability and tapping accuracy in the mobile menu. */
+    nav ul.show li {
+        margin: 0.5rem 0;
+    }
+    
+    /* Styles the authentication buttons when they are displayed in the mobile menu, arranging them in a vertical stack (flex-direction: column) with slight top margin and a small gap. */
+    .auth-buttons.show {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+}
+
+
+/* Authentication Pages Styles */
+/* This extensive group styles the layout, form elements, and supporting content for authentication pages. */
+
+/* The full-page wrapper, ensuring the content fills the viewport (min-height) and applying a background gradient for visual depth. */
+.auth-section {
+    padding: 4rem 0;
+    min-height: calc(100vh - 200px);
+    background: linear-gradient(135deg, var(--background-alt) 0%, var(--background-color) 100%);
+}
+
+/* Centers the content (max-width: 1000px; margin: 0 auto;) and uses CSS Grid to create a two-column layout (1fr 1fr) to display the form and the supporting image/illustration side-by-side. */
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Styles the form box itself: it has a solid background, generous padding, rounded corners, and a shadow, making it stand out from the page background. */
+.auth-form-wrapper {
+    background: var(--background-color);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* Centers and styles the main form title (h2) and subtitle (p). */
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.auth-header h2 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+.auth-header p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* Uses Flexbox to stack the form groups and rows vertically with $1.5 \text{rem}$ vertical spacing (gap). */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Used for layout within the form, creating a two-column grid with 1rem spacing. */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* It makes the .form-group element the positioning context for any absolutely positioned child elements inside it. */
+.form-group {
+    position: relative;
+}
+
+/* Styles the input labels to be distinct and slightly bold. */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Styles all input fields: they span full width, have generous padding, a light border, and a subtle transition for visual feedback. On :focus, the border changes color to the primary color, and a soft box shadow halo is added. */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    background: var(--background-color);
+}
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.1);
+}
+
+/* Positions a non-interactive icon absolutely inside the input field on the right side. The complex top: calc(50% + 12px) calculation adjusts the icon's position if a <label> is present above the input. */
+.form-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    pointer-events: none;
+}
+.form-group:has(label) .form-icon {
+    top: calc(50% + 12px);
+}
+
+/* Styles a clickable button (for show/hide password functionality) that is absolutely positioned on the right side of the input field. */
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: var(--transition);
+}
+
+/* Repositions the password toggle icon in form groups that contain a label. The calc(50% + 12px) value adjusts the icon's top position to account for the vertical space taken up by the label, ensuring the icon remains vertically centered relative to the input field itself, not the entire .form-group container. */
+.form-group:has(label) .password-toggle {
+    top: calc(50% + 12px);
+}
+
+/* Changes the icon's color to the --primary-color on hover, providing clear visual feedback that the element is interactive. */
+.password-toggle:hover {
+    color: var(--primary-color);
+}
+
+/* Uses Flexbox (display: flex) to arrange child elements (like the checkbox and "Forgot Password" link) on the same line. justify-content: space-between pushes them to opposite ends of the container, and align-items: center vertically centers them. */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+/* The wrapper acts as the clickable area, using Flexbox to align the text and the custom box vertically. It sets a smaller font size, a lighter color, and assigns the cursor: pointer to indicate clickability. */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Hides the actual browser checkbox (display: none), allowing the custom styled element (.checkmark) to take its place visually. */
+.checkbox-container input {
+    margin-right: 0.5rem;
+}
+
+/* Creates the custom checkbox box. It's an $18 \text{px}$ square with a border and rounded corners. It is set up with transition to smooth the check/uncheck visual change. */
+.checkmark {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 3px;
+    margin-right: 0.5rem;
+    transition: var(--transition);
+}
+
+/* This rule sets display: none; to hide the actual, default browser checkbox. This allows the immediately following element, .checkmark, to serve as the custom-styled visual representation, while the input handles the necessary checked state for forms. */
+.checkbox-container input {
+    display: none;
+}
+
+/* This selector applies styles to the .checkmark box only when the hidden input is checked. It changes the background color and border color of the box to the site's --primary-color, visually indicating that the option is selected. */
+.checkbox-container input:checked + .checkmark {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* This rule targets the pseudo-element inside the checked box. It inserts the checkmark symbol (content: '✓') and styles it to be white, bold, and precisely positioned to appear correctly centered within the colored box. */
+.checkbox-container input:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Styles the link with the primary brand color, a small font size (0.9rem), and removes the underline. The :hover state adds the underline back for standard link feedback. */
+.forgot-password {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* A utility class that makes a button span the full width (width: 100%) of its container and increases its padding (1rem) and font weight to be a prominent call-to-action button. */
+.btn-full {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Centers the element's text, adds vertical margin, and sets position: relative to anchor the line pseudo-element. */
+.auth-divider {
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+/* Creates the 1px thick horizontal line (height: 1px) that spans the full width, using the border color. It's centered vertically with top: 50%. */
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border-color);
+}
+
+/* Styles the text that sits over the line. It uses padding with the background color to create a gap in the line, making the text stand out. */
+.auth-divider span {
+    background: var(--background-color);
+    padding: 0 1rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Uses CSS Grid to arrange social login buttons in a two-column layout (1fr 1fr) with 1rem spacing between them. */
+.social-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Styles the base social button with Flexbox to center the icon and text (gap: 0.5rem). It has a light border, rounded corners, and a standard transition. */
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    background: var(--background-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+/* General hover effect: changes the border color to the --primary-color and background to the --background-alt. */
+.btn-social:hover {
+    border-color: var(--primary-color);
+    background: var(--background-alt);
+}
+
+/* Overrides the hover colors for Google to use its brand red (#db4437). */
+.btn-google:hover {
+    border-color: #db4437;
+    color: #db4437;
+}
+
+/* Overrides the hover colors for Facebook to use its brand blue (#4267B2). */
+.btn-facebook:hover {
+    border-color: #4267B2;
+    color: #4267B2;
+}
+
+/* Centers the content, adds generous top padding, and places a light 1px border at the top to visually separate it from the main form content. */
+.auth-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.auth-footer p {
+    color: var(--text-light);
+}
+
+/* Styles the link using the --primary-color and removes the default underline. The :hover state adds the underline back. */
+.auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Centers all content and adds padding within the column. */
+.auth-image {
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Styles the key illustration/icon with a fixed size ($\text{120 px}$) and slight translucency. */
+.auth-illustration {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+/* Styles the key illustration/icon with a fixed size (120px) and slight translucency. */
+.auth-image h3 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+/* Styles the descriptive text with a light color, a larger font size (1rem), and increased line height for readability. */
+.auth-image p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Uses CSS Grid to display two sets of statistics side-by-side (1fr 1fr). */
+.auth-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* It centers any inline content (such as text, images, or inline elements like <strong> and <span>) horizontally within the element that has the class .stat. */
+.stat {
+    text-align: center;
+}
+
+/* Styles the numerical value of the stat: large, bold, and in the --primary-color. */
+.stat strong {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Styles the label/description of the stat with a smaller, lighter font. */
+.stat span {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Styles a smaller logo that might be displayed in this area. */
+.footer-logo {
+    height: 30px;
+    width: auto;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design for Auth Pages */
+
+/* This media query restructures the authentication pages for medium to small screens, prioritizing vertical stacking and centering. */
+@media (max-width: 768px) {
+    /* The main container switches from a two-column layout to a single stacked column (1fr) with reduced vertical spacing (gap: 2rem), ensuring all elements are easily viewable. */
+    .auth-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /*Reduces the internal padding of the form card from 3rem to 2rem to save space on smaller screens.  */
+    .auth-form-wrapper {
+        padding: 2rem;
+    }
+    
+    /* Collapses any horizontal form groups (like side-by-side name fields) into a single stacked column. */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Collapses the social login buttons from a 2-column layout to a single stacked column, making each button full-width. */
+    .social-login {
+        grid-template-columns: 1fr;
+    }
+    
+    /* The supporting statistics grid is maintained as a 2-column layout (1fr 1fr), but the gap is reduced to 1rem. */
+    .auth-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    /* The form options (e.g., "Remember Me" and "Forgot Password") are changed from a horizontally spaced row to a vertical stack (flex-direction: column) aligned to the left (align-items: flex-start), preventing text wrapping issues. */
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* This query makes final adjustments for very narrow phone screens. */
+@media (max-width: 576px) {
+    /* Reduces the vertical padding of the entire section to 2rem for a more compact view. */
+    .auth-section {
+        padding: 2rem 0;
+    }
+    
+    /* Further reduces the internal padding of the form card to 1.5 rem. */
+    .auth-form-wrapper {
+        padding: 1.5rem;
+    }
+    
+    /* Reduces the size of the form's main heading to 1.5rem. */
+    .auth-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* The statistics grid finally collapses to a single stacked column, ensuring readability even on the smallest phones. */
+    .auth-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* Print Styles */
+/* This media query defines styles specifically for when the user attempts to print the page, optimizing for paper efficiency and readability. */
+@media print {
+    /* Hides all non-essential elements like the site navigation, footer, mobile toggles, and authentication buttons, ensuring only the main content is printed. */
+    .header,
+    .footer,
+    .mobile-menu-btn,
+    .auth-buttons {
+        display: none;
+    }
+    
+    /* Standardizes the font size to 12pt and sets a comfortable line height of 1.4, which are best practices for print readability. */
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    /* Removes any maximum width constraints (max-width: none;) and padding, allowing the content to span the full width of the printed page for maximum content area.  */
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+}

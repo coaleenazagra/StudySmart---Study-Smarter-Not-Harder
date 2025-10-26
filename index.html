@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!-- File: index.html - Home page providing overview, navigation, previews, testimonials, and CTA -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySmart - Study Smarter, Not Harder</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>    
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Go to Home">
+                <img src="images/logo.svg" alt="StudySmart Logo" class="logo-img">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="techniques.html">Study Techniques</a></li>
+                    <li><a href="tools.html">Study Tools</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <h1>Study Smarter, Not Harder</h1>
+                <p>Discover effective study techniques, tools and resources to maximize your learning potential.</p>
+                <div class="hero-buttons">
+                    <a href="techniques.html" class="btn btn-primary pulse-animation">Explore Techniques</a>
+                    <a href="tools.html" class="btn btn-secondary">Try Study Tools</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-image.svg" alt="Students studying effectively">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">How StudySmart Helps You</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Proven Study Techniques</h3>
+                    <p>Learn scientifically-backed methods to retain information better and study more efficiently.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Time Management Tools</h3>
+                    <p>Track your study sessions, set goals, and manage your time effectively with our built-in tools.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Support</h3>
+                    <p>Connect with other students, share tips, and motivate each other to achieve academic success.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning progress and identify areas where you need to focus more attention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Techniques Preview -->
+    <section class="techniques-preview">
+        <div class="container">
+            <h2 class="section-title">Popular Study Techniques</h2>
+            <div class="techniques-grid">
+                <!-- Pomodoro Card -->
+                <div class="technique-card">
+                    <div class="technique-thumb">
+                        <img src="images/tomato.jpg" alt="Pomodoro illustration">
+                    </div>
+                    <div class="technique-content">
+                        <h3>Try the Pomodoro Technique</h3>
+                        <p>Break down your work into focused 25-minute intervals separated by short breaks.</p>
+                        <a href="techniques.html#pomodoro" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Feynman Card -->
+                <div class="technique-card">
+                    <div class="technique-thumb">
+                        <img src="images/feynman.png" alt="Feynman Technique illustration">
+                    </div>
+                    <div class="technique-content">
+                        <h3>Master the Feynman Technique</h3>
+                        <p>Learn any topic by explaining it in simple terms to find knowledge gaps.</p>
+                        <a href="techniques.html#feynman" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Spaced Repetition Card -->
+                <div class="technique-card">
+                    <div class="technique-thumb">
+                        <img src="images/spaced-repetition.webp" alt="Spaced Repetition illustration">
+                    </div>
+                    <div class="technique-content">
+                        <h3>Use Spaced Repetition</h3>
+                        <p>Enhance memory by reviewing information at increasing intervals.</p>
+                        <a href="techniques.html#spaced-repetition" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all">
+                <a href="techniques.html" class="btn btn-secondary">View All Techniques</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Tools Preview -->
+    <section class="tools-preview">
+        <div class="container">
+            <h2 class="section-title">Interactive Study Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                    <h3>Pomodoro Timer</h3>
+                    <p>Stay focused with our customizable Pomodoro timer to manage study sessions and breaks.</p>
+                    <a href="tools.html#pomodoro" class="btn btn-primary">Try Now</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Study Planner</h3>
+                    <p>Organize your study schedule, set goals, and track your progress with our planning tool.</p>
+                    <a href="tools.html#planner" class="btn btn-primary">Try Now</a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Focus Music</h3>
+                    <p>Access a collection of background sounds and music designed to enhance concentration.</p>
+                    <a href="tools.html#music" class="btn btn-primary">Try Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Students Say</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The Pomodoro timer and study techniques helped me improve my focus. I've seen a significant improvement in my grades since using StudySmart!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images/student1.webp" alt="Student testimonial">
+                        <div class="author-info">
+                            <h4>Cathy Mae Limbaga</h4>
+                            <p>Accountancy Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The study planner is amazing! It made preparing for my major exams so much more efficient. I love how I can track my progress over time."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images/student2.png" alt="Student testimonial">
+                        <div class="author-info">
+                            <h4>Edgar Balbalosa</h4>
+                            <p>Hospitality Management Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"I was struggling with time management until I found StudySmart. The study planner and techniques have transformed how I approach my coursework."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images/student3.png" alt="Student testimonial">
+                        <div class="author-info">
+                            <h4>Jesselle Mae Grace Ombayan</h4>
+                            <p>Business Administration Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial navigation dots are now handled by JavaScript -->
+            <div class="testimonial-dots"></div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Study Habits?</h2>
+                <p>Join thousands of students who are studying smarter, not harder. Create your free account today!</p>
+                <a href="signup.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>StudySmart</h2>
+                    <p>Study Smarter, Not Harder</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="techniques.html">Study Techniques</a></li>
+                            <li><a href="tools.html">Study Tools</a></li>
+                            <li><a href="profile.html">My Profile</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="https://www.notion.so/" target="_blank" rel="noopener">Notion</a></li>
+                            <li><a href="https://www.forestapp.cc/" target="_blank" rel="noopener">Forest App</a></li>
+                            <li><a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a></li>
+                            <li><a href="https://apps.ankiweb.net/" target="_blank" rel="noopener">Anki</a></li>
+                            <li><a href="https://miro.com/" target="_blank" rel="noopener">Miro</a></li>
+                            <li><a href="https://www.grammarly.com/" target="_blank" rel="noopener">Grammarly</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Get Started</h3>
+                        <ul>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="signup.html">Signup</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 StudySmart. All rights reserved.</p>
+            </div>  
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

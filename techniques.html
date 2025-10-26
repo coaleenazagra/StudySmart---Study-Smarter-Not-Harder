@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<!-- File: techniques.html - Explains study techniques and related guidance -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Techniques - StudySmart</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced Techniques Page Styles */
+
+        .techniques-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .techniques-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 50%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+        .techniques-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 40%;
+            height: 180%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(30px);
+        }
+        .techniques-hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .techniques-hero p {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        .techniques-nav {
+            background: var(--background-color);
+            padding: 1.25rem 0;
+            box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .nav-link {
+            padding: 0.6rem 1rem;
+            background: var(--background-alt);
+            border-radius: 25px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent; /* Enable outline; fixes typo */
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        .technique-card {
+            background: var(--background-color);
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin: 4rem 0;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
+            background-image: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(255, 107, 193, 0.03) 100%);
+        }
+        .technique-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            border-color: rgba(59, 130, 246, 0.1);
+        }
+        .technique-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(255, 107, 193, 0.1) 100%);
+            border-radius: 0 24px 0 100%;
+            opacity: 0.5;
+            z-index: 0;
+        }
+        .technique-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .technique-header {
+             display: flex;
+             align-items: center;
+             gap: 1rem;
+             margin-bottom: 1.5rem;
+         }
+        .technique-icon {
+            font-size: 3rem;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        .technique-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+        .technique-title p {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        .technique-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        .technique-description h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .technique-description p {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        .technique-image {
+            text-align: center;
+            padding: 2rem;
+            background: var(--background-alt);
+            border-radius: 15px;
+        }
+        .technique-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        }
+        .technique-steps {
+            background: var(--background-alt);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+        .technique-steps h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+            font-weight: 600;
+        }
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--background-alt);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+        }
+        .step-item:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 24px rgba(0,0,0,0.08); 
+        }
+        .step-number {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 42px; 
+            height: 42px; 
+            border-radius: 50%;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-weight: 600; 
+            flex-shrink: 0; 
+            box-shadow: 0 6px 18px rgba(59,130,246,0.25);
+        }
+        .step-content h4 { 
+            font-size: 1.2rem; 
+            margin-bottom: 0.5rem; 
+        }
+        .step-content p { 
+            color: var(--text-light); 
+        }
+        .technique-tips { 
+            background-color: var(--background-alt); 
+            padding: 2rem; 
+            border-radius: var(--border-radius); 
+            margin-top: 2rem; 
+        }
+        .technique-tips h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 1.25rem; 
+            color: var(--primary-color); 
+        }
+        .tips-list { 
+            list-style: none; 
+            display: grid;
+            gap: 0.75rem; 
+        }
+        .tips-list li { 
+            margin-bottom: 0; 
+            padding: 0.75rem 0.75rem 0.75rem 2rem; 
+            position: relative; 
+            background: var(--background-color); 
+            border: 1px solid var(--border-color); 
+            border-left: 4px solid var(--primary-color); 
+            border-radius: var(--border-radius); 
+        }
+        .tips-list li:before {
+            content: '\f00c'; 
+            font-family: 'Font Awesome 6 Free'; 
+            font-weight: 900;
+            color: var(--primary-color); 
+            position: absolute; 
+            left: 0.75rem; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 20px; 
+            height: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 0.85rem;
+        }
+        .technique-resources { 
+            margin-top: 2rem; 
+        }
+        .technique-resources h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            color: var(--primary-color); 
+        }
+        .resources-list { 
+            list-style: none; 
+        }
+        .resources-list li { 
+            margin-bottom: 1rem; 
+            padding-left: 2rem; 
+            position: relative; 
+            background: var(--background-color); 
+            border: 1px solid var(--border-color); 
+            border-left: 4px solid var(--secondary-color); 
+            border-radius: var(--border-radius); 
+        }
+        .resources-list li:before {
+            content: '\\f02d'; 
+            font-family: 'Font Awesome 6 Free'; 
+            font-weight: 900;
+            color: var(--secondary-color); 
+            position: absolute; 
+            left: 0.75rem;
+             top: 50%; transform: translateY(-50%); 
+             width: 20px; height: 20px; 
+             display: flex; 
+             align-items: center; 
+             justify-content: center; 
+             font-size: 0.85rem;
+        }
+        .technique-cta { 
+            text-align: center; 
+            margin-top: 2rem; 
+        }
+        @media (max-width: 768px) {
+            .technique-section > .container { padding: 1.25rem; }
+            .technique-content { grid-template-columns: 1fr; }
+            .technique-image { order: -1; }
+            .technique-header { gap: 0.75rem; }
+            .step-item { gap: 0.75rem; }
+        }
+    </style>
+    <style>
+        /* Additional styles specific to techniques page */
+        .technique-section {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 100px;
+        }
+        .technique-section:last-child { 
+            border-bottom: none; 
+        }
+        .technique-section > .container {
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+        }
+        .technique-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem; 
+            margin-bottom: 1.5rem; 
+        }
+        .technique-icon {
+            font-size: 2.5rem; 
+            color: var(--primary-color);
+            background-color: rgba(74, 107, 255, 0.1);
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        .technique-title h2 { 
+            font-size: 2rem; 
+            margin-bottom: 0.5rem; 
+            color: var(--text-color);
+             position: relative; 
+             padding-bottom: 8px; 
+            }
+        .technique-title h2::after {
+            content: '';
+            position: absolute;
+            left: 0; 
+            bottom: 0;
+            width: 60px; 
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        .technique-title p { 
+            color: var(--text-light); 
+            font-size: 1.1rem; 
+        }
+        .technique-content { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 3rem; 
+            align-items: start;
+            position: relative;
+            z-index: 1;
+        }
+        .technique-content.single-column { 
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
+        }
+        .technique-image { 
+            text-align: center;
+            position: relative;
+        }
+        .technique-image::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: calc(var(--border-radius) + 5px);
+            opacity: 0.1;
+            z-index: -1;
+        }
+        .technique-image img { 
+            max-width: 100%; 
+            border-radius: var(--border-radius); 
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        .technique-image:hover img {
+            transform: scale(1.02);
+        }
+        .technique-description h3 { 
+            font-size: 1.8rem; 
+            margin-bottom: 1.2rem; 
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+        .technique-description h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        .technique-description p { 
+            margin-bottom: 1.5rem; 
+            color: var(--text-color); 
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .technique-steps { 
+            margin: 2rem 0; 
+            background: var(--background-alt); 
+            padding: 1.5rem; 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--border-radius); 
+        }
+        .technique-steps h3 { 
+            font-size: 1.6rem; 
+            margin-bottom: 1.25rem; 
+            color: var(--primary-color); 
+        }
+        .step-item { 
+            display: flex; 
+            gap: 1rem; 
+            margin-bottom: 1rem; 
+            padding: 1rem; 
+            background: var(--background-alt); 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--border-radius); 
+            box-shadow: var(--shadow); 
+            transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .step-number {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); 
+            color: #fff;
+            width: 42px; 
+            height: 42px; 
+            border-radius: 50%;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-weight: 600; 
+            flex-shrink: 0; 
+            box-shadow: 0 6px 18px rgba(59,130,246,0.25);
+        }
+        .step-content h4 { 
+            font-size: 1.2rem; 
+            margin-bottom: 0.5rem; 
+        }
+        .step-content p { 
+            color: var(--text-light); 
+        }
+        .technique-tips { 
+            background-color: var(--background-alt); 
+            padding: 2rem; 
+            border-radius: var(--border-radius); 
+            margin-top: 2rem; 
+        }
+        .technique-tips h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 1.25rem; 
+            color: var(--primary-color); 
+        }
+        .tips-list { 
+            list-style: none; 
+            display: grid; 
+            gap: 0.75rem; 
+        }
+        .tips-list li { 
+            margin-bottom: 0; 
+            padding: 0.75rem 0.75rem 0.75rem 2rem; 
+            position: relative; 
+            background: var(--background-color); 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--border-radius); 
+        }
+        .tips-list li:before {
+            content: '\f00c'; 
+            font-family: 'Font Awesome 6 Free'; 
+            font-weight: 900;
+            color: var(--text-color); 
+            position: absolute; left: 0.75rem; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 20px; 
+            height: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 0.75rem;
+        }
+        .technique-resources { 
+            margin-top: 2rem; 
+        }
+        .technique-resources h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            color: var(--primary-color); 
+        }
+        .resources-list { 
+            list-style: none; 
+        }
+        .resources-list li { 
+            margin-bottom: 1rem; 
+            padding-left: 2rem; 
+            position: relative; 
+        }
+        .resources-list li:before {
+            content: '\\f02d'; 
+            font-family: 'Font Awesome 6 Free'; 
+            font-weight: 900;
+            color: var(--secondary-color); 
+            position: absolute; 
+            left: 0; top: 2px;
+        }
+        .technique-cta { 
+            text-align: center; 
+            margin-top: 2rem; 
+        }
+        @media (max-width: 768px) {
+            .technique-section > .container { padding: 1.25rem; }
+            .technique-content { grid-template-columns: 1fr; }
+            .technique-image { order: -1; }
+            .technique-header { gap: 0.75rem; }
+            .step-item { gap: 0.75rem; }
+        }
+    </style>
+    
+<!-- Header Section -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Go to Home">
+                <img src="images/logo.svg" alt="StudySmart Logo" class="logo-img">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="techniques.html" class="active">Study Techniques</a></li>
+                    <li><a href="tools.html">Study Tools</a></li>
+                    <li><a href="profile.html">My Profile</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Page Banner -->
+    <section class="techniques-hero">
+        <div class="container">
+            <h1>Effective Study Techniques</h1>
+            <p>Discover scientifically-proven methods to enhance your learning and retention.</p>
+            
+            <!-- Quick Navigation -->
+            <div class="techniques-nav">
+                <h3>Jump to Technique:</h3>
+                <div class="nav-links">
+                    <a href="#pomodoro" class="nav-link">
+                        <i class="fas fa-clock"></i>
+                        <span>Pomodoro</span>
+                    </a>
+                    <a href="#spaced-repetition" class="nav-link">
+                        <i class="fas fa-repeat"></i>
+                        <span>Spaced Repetition</span>
+                    </a>
+                    <a href="#active-recall" class="nav-link">
+                        <i class="fas fa-brain"></i>
+                        <span>Active Recall</span>
+                    </a>
+                    <a href="#feynman" class="nav-link">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Feynman</span>
+                    </a>
+                    <a href="#mind-mapping" class="nav-link">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Mind Mapping</span>
+                    </a>
+                    <a href="#sq3r" class="nav-link">
+                        <i class="fas fa-book-open"></i>
+                        <span>SQ3R Method</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pomodoro Technique -->
+    <section id="pomodoro" class="technique-section">
+        <div class="container">
+            <div class="technique-header">
+                <div class="technique-title">
+                    <h2>Pomodoro Technique</h2>
+                    <p>Break your study sessions into focused intervals with short breaks</p>
+                </div>
+            </div>
+            
+            <div class="technique-content single-column">
+                <div class="technique-description">
+                    <h3>What is the Pomodoro Technique?</h3>
+                    <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. These intervals are known as "pomodoros," the plural in English of the Italian word pomodoro (tomato), after the tomato-shaped kitchen timer that Cirillo used as a university student.</p>
+                    
+                    <p>This technique is based on the idea that frequent breaks can improve mental agility and help maintain focus for longer periods. By working in short, focused bursts and taking regular breaks, you can maintain high levels of concentration and avoid burnout.</p>
+                </div>
+                <!-- technique-image removed per request -->
+            </div>
+            
+            <div class="technique-steps">
+                <h3>How to Use the Pomodoro Technique</h3>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Choose a task to work on</h4>
+                        <p>Select a specific task or assignment that you need to complete.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Set the timer for 25 minutes</h4>
+                        <p>This is your first "Pomodoro" session. Commit to focusing solely on your task for this time period.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Work until the timer rings</h4>
+                        <p>Focus intensely on your task. If a distraction pops into your mind, write it down quickly and return to your task.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Take a short break (5 minutes)</h4>
+                        <p>When the timer rings, take a short break. Stand up, stretch, grab a drink, or do something else to briefly disconnect from your work.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Repeat steps 2-4 three more times</h4>
+                        <p>After completing four Pomodoros, take a longer break (15-30 minutes) to recharge.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="technique-tips">
+                <h3>Tips for Success</h3>
+                <ul class="tips-list">
+                    <li>Find your optimal Pomodoro length. While 25 minutes is standard, you might work better with 20 or 30-minute intervals.</li>
+                    <li>Use a physical timer or dedicated app to track your Pomodoros.</li>
+                    <li>During a Pomodoro, focus solely on one task. Multitasking reduces effectiveness.</li>
+                    <li>If you finish a task during a Pomodoro, use the remaining time for review or improvement.</li>
+                    <li>If you're interrupted during a Pomodoro, either end the Pomodoro immediately (if the interruption requires your attention) or note down the interruption and continue.</li>
+                    <li>Use your short breaks to physically move away from your study space.</li>
+                </ul>
+            </div>
+            
+            <div class="technique-cta">
+                <a href="tools.html#pomodoro" class="btn btn-primary">Try Our Pomodoro Timer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spaced Repetition -->
+    <section id="spaced-repetition" class="technique-section">
+        <div class="container">
+            <div class="technique-header">
+                <div class="technique-title">
+                    <h2>Spaced Repetition</h2>
+                    <p>Review information at increasing intervals to improve long-term retention</p>
+                </div>
+            </div>
+            
+            <div class="technique-content single-column">
+                <div class="technique-description">
+                    <h3>What is Spaced Repetition?</h3>
+                    <p>Spaced repetition is a learning technique that involves reviewing information at systematically increasing intervals. Instead of cramming all at once, you space out your study sessions over time, which has been proven to significantly enhance long-term retention.</p>
+                    
+                    <p>This technique is based on the psychological spacing effect, which demonstrates that information is more effectively remembered when studied in multiple, spread-out sessions rather than in a single marathon session. It works by reviewing material just as you're about to forget it, strengthening the neural pathways each time.</p>
+                </div>
+            </div>
+            
+            <div class="technique-steps">
+                <h3>How to Use Spaced Repetition</h3>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Learn the material initially</h4>
+                        <p>Study the information thoroughly to ensure you understand it before beginning the spaced repetition process.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Create a review schedule</h4>
+                        <p>Plan to review the material at increasing intervals: first after 1 day, then 3 days, then 7 days, then 14 days, and so on.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Test yourself during each review</h4>
+                        <p>Don't just re-read the material. Actively test your recall using practice questions or by explaining concepts in your own words.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Adjust intervals based on difficulty</h4>
+                        <p>If you easily recall information, increase the interval before the next review. If you struggle, decrease the interval.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Continue the process until mastery</h4>
+                        <p>Keep reviewing at increasing intervals until the information is firmly stored in your long-term memory.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="technique-tips">
+                <h3>Tips for Success</h3>
+                <ul class="tips-list">
+                    <li>Use spaced repetition software or apps that automatically schedule reviews based on your performance.</li>
+                    <li>Combine spaced repetition with active recall for maximum effectiveness.</li>
+                    <li>Focus more time on difficult concepts and less on material you already know well.</li>
+                    <li>Create practice questions or concise study notes for easy review.</li>
+                    <li>Be consistent with your review schedule to maintain the spacing effect.</li>
+                    <li>Start implementing spaced repetition early in your learning process, not just before exams.</li>
+                </ul>
+            </div>
+            
+            <div class="technique-cta">
+                <a href="tools.html#planner" class="btn btn-primary">Try Our Study Planner</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Active Recall -->
+    <section id="active-recall" class="technique-section">
+        <div class="container">
+            <div class="technique-header">
+                <div class="technique-title">
+                    <h2>Active Recall</h2>
+                    <p>Test yourself to strengthen memory and understanding</p>
+                </div>
+            </div>
+            
+            <div class="technique-content single-column">
+                <div class="technique-description">
+                    <h3>What is Active Recall?</h3>
+                    <p>Active recall is a learning principle that involves actively stimulating your memory during the learning process. Rather than passively reviewing information (like re-reading notes), you test yourself by trying to recall specific information from memory.</p>
+                    
+                    <p>This technique is one of the most effective learning strategies because it strengthens neural connections and forces your brain to retrieve information, which is exactly what you'll need to do during exams or when applying knowledge in real-world situations.</p>
+                </div>
+            </div>
+            
+            <div class="technique-steps">
+                <h3>How to Use Active Recall</h3>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Study the material initially</h4>
+                        <p>Ensure you have a basic understanding of the content before beginning active recall practice.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Close your notes and books</h4>
+                        <p>Put away all reference materials so you can't simply look up answers.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Test yourself</h4>
+                        <p>Ask yourself questions about the material or try to explain concepts in your own words without referring to notes.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Check your answers</h4>
+                        <p>After attempting to recall, check your answers against your notes or textbook to identify gaps in your knowledge.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Focus on weak areas</h4>
+                        <p>Pay special attention to information you struggled to recall and practice those areas more frequently.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="technique-tips">
+                <h3>Tips for Success</h3>
+                <ul class="tips-list">
+                    <li>Create practice questions based on your lecture notes and readings.</li>
+                    <li>Try the "blank page method": start with a blank page and write down everything you can remember about a topic.</li>
+                    <li>Explain concepts out loud as if teaching someone else (see the Feynman Technique).</li>
+                    <li>Use past exam questions or create your own based on potential test questions.</li>
+                    <li>Combine active recall with spaced repetition for maximum effectiveness.</li>
+                    <li>Don't check your notes too quickly—struggle a bit with recall as this strengthens memory.</li>
+                </ul>
+            </div>
+            
+            <div class="technique-cta">
+                <a href="tools.html#planner" class="btn btn-primary">Try Our Study Planner</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feynman Technique -->
+    <section id="feynman" class="technique-section">
+        <div class="container">
+            <div class="technique-header">
+                <div class="technique-title">
+                    <h2>Feynman Technique</h2>
+                    <p>Explain concepts in simple terms to identify gaps in your understanding</p>
+                </div>
+            </div>
+            
+            <div class="technique-content single-column">
+                <div class="technique-description">
+                    <h3>What is the Feynman Technique?</h3>
+                    <p>The Feynman Technique is a learning method named after Nobel Prize-winning physicist Richard Feynman, who was known for his ability to explain complex topics in simple, understandable terms. This technique involves explaining a concept in simple language as if you were teaching it to someone else.</p>
+                    
+                    <p>By forcing yourself to explain a concept in simple terms, you quickly identify areas where you have a solid understanding and areas where you have knowledge gaps. This process helps you deepen your understanding and identify what you need to review further.</p>
+                </div>
+            </div>
+            
+            <div class="technique-steps">
+                <h3>How to Use the Feynman Technique</h3>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Choose a concept to learn</h4>
+                        <p>Select a specific topic or concept that you want to understand thoroughly.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Explain it in simple terms</h4>
+                        <p>Pretend you're teaching the concept to someone who has no background knowledge. Use simple language and avoid jargon.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Identify gaps in your explanation</h4>
+                        <p>Note areas where you struggled to explain clearly or had to use complex terminology. These are your knowledge gaps.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Review and simplify</h4>
+                        <p>Go back to your source material to fill in knowledge gaps, then simplify your explanation further.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Organize and review</h4>
+                        <p>Organize your simplified explanation and review it regularly to reinforce your understanding.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="technique-tips">
+                <h3>Tips for Success</h3>
+                <ul class="tips-list">
+                    <li>Actually teach the concept to someone else if possible, or record yourself explaining it.</li>
+                    <li>Use analogies and metaphors to make complex ideas more relatable.</li>
+                    <li>Write out your explanation by hand, as this can help with retention.</li>
+                    <li>If you can't explain something simply, you don't understand it well enough yet.</li>
+                    <li>Create visual aids or diagrams to supplement your verbal explanation.</li>
+                    <li>Practice regularly with different concepts to strengthen your overall learning approach.</li>
+                </ul>
+            </div>
+            
+            <div class="technique-cta">
+                <a href="tools.html#planner" class="btn btn-primary">Plan Your Study Sessions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mind Mapping -->
+    <section id="mind-mapping" class="technique-section">
+        <div class="container">
+            <div class="technique-header">
+                <div class="technique-title">
+                    <h2>Mind Mapping</h2>
+                    <p>Visualize connections between ideas to enhance understanding and recall</p>
+                </div>
+            </div>
+            
+            <div class="technique-content single-column">
+                <div class="technique-description">
+                    <h3>What is Mind Mapping?</h3>
+                    <p>Mind mapping is a visual thinking tool that helps you organize information, connect ideas, and generate new insights. It's a diagram that represents words, ideas, tasks, or other items linked to and arranged radially around a central concept.</p>
+                    
+                    <p>This technique leverages the brain's natural tendency to think in non-linear patterns and helps you see the big picture while also capturing details. Mind maps can be particularly helpful for visual learners and for subjects that involve many interconnected concepts.</p>
+                </div>
+                
+                <div class="technique-image">
+                <img src="images/study-icon.svg" alt="Mind Mapping illustration">
+                </div>
+            </div>
+            
+            <div class="technique-steps">
+                <h3>How to Create a Mind Map</h3>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Start with a central idea</h4>
+                        <p>Place your main topic or concept in the center of a blank page and draw a circle around it.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Add main branches</h4>
+                        <p>Draw lines radiating from the central concept to represent main subtopics or categories.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Add secondary branches</h4>
+                        <p>From each main branch, draw smaller branches to represent related ideas, facts, or details.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Use colors and images</h4>
+                        <p>Incorporate different colors, symbols, and images to enhance visual memory and make connections more apparent.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Review and revise</h4>
+                        <p>Add new information as you learn more and reorganize branches if needed to better represent relationships.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="technique-tips">
+                <h3>Tips for Success</h3>
+                <ul class="tips-list">
+                    <li>Use single words or short phrases rather than sentences to keep the mind map concise.</li>
+                    <li>Make your mind map colorful and visually engaging to enhance memory.</li>
+                    <li>Use different line thicknesses to show hierarchy and importance.</li>
+                    <li>Don't worry about creating a perfect mind map on the first try—it's a flexible tool that can evolve.</li>
+                    <li>Try digital mind mapping tools that allow for easy editing and sharing.</li>
+                    <li>Use mind maps for brainstorming, note-taking, planning essays, or reviewing for exams.</li>
+                </ul>
+            </div>
+            
+            <div class="technique-cta">
+                <a href="tools.html#planner" class="btn btn-primary">Plan Your Study Sessions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SQ3R Method -->
+    <section id="sq3r" class="technique-section">
+        <div class="container">
+            <div class="technique-header">
+                 <div class="technique-title">
+                     <h2>SQ3R Method</h2>
+                     <p>A systematic approach to reading and comprehension</p>
+                 </div>
+             </div>
+             
+             <div class="technique-content single-column">
+                <div class="technique-description">
+                    <h3>What is the SQ3R Method?</h3>
+                    <p>SQ3R is a reading comprehension method designed to help you get the most out of your textbook reading. The acronym stands for Survey, Question, Read, Recite, and Review—the five steps of this structured reading process.</p>
+                    
+                    <p>This technique transforms passive reading into an active learning experience by engaging with the material before, during, and after reading. It's particularly effective for dense textbooks and academic articles where comprehension and retention are crucial.</p>
+                </div>
+            </div>
+            
+            <div class="technique-steps">
+                <h3>How to Use the SQ3R Method</h3>
+                
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Survey</h4>
+                        <p>Quickly skim the material to get an overview. Look at headings, subheadings, images, charts, summaries, and highlighted text to understand the structure and main points.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Question</h4>
+                        <p>Turn headings and subheadings into questions. For example, if a section is titled "Causes of Climate Change," ask yourself "What are the causes of climate change?"</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Read</h4>
+                        <p>Read the material section by section, actively looking for answers to your questions. Take notes and highlight key information.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Recite</h4>
+                        <p>After each section, recite or write down the main points in your own words without looking at the text. Answer the questions you created earlier.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Review</h4>
+                        <p>After completing the entire reading, review all your notes and questions. Summarize the material as a whole and identify key takeaways.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="technique-tips">
+                <h3>Tips for Success</h3>
+                <ul class="tips-list">
+                    <li>Don't skip the Survey step—it provides crucial context that improves comprehension.</li>
+                    <li>Create meaningful questions that require understanding, not just factual recall.</li>
+                    <li>Take brief notes during the Read step, but save detailed note-taking for the Recite step.</li>
+                    <li>During Recite, speak out loud if possible, as verbalization enhances retention.</li>
+                    <li>Schedule a follow-up Review session a day or two later to reinforce learning.</li>
+                    <li>Adapt the method to your needs—spend more time on difficult sections and less on familiar content.</li>
+                </ul>
+            </div>
+            
+            <div class="technique-cta">
+                <a href="tools.html#planner" class="btn btn-primary">Plan Your Study Sessions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Study Habits?</h2>
+                <p>Try our interactive study tools to put these techniques into practice!</p>
+                <a href="tools.html" class="btn btn-primary">Explore Study Tools</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>StudySmart</h2>
+                    <p>Study Smarter, Not Harder</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="techniques.html">Study Techniques</a></li>
+                            <li><a href="tools.html">Study Tools</a></li>
+                            <li><a href="profile.html">My Profile</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="https://www.notion.so/" target="_blank" rel="noopener">Notion</a></li>
+                            <li><a href="https://www.forestapp.cc/" target="_blank" rel="noopener">Forest App</a></li>
+                            <li><a href="https://www.zotero.org/" target="_blank" rel="noopener">Zotero</a></li>
+                            <li><a href="https://apps.ankiweb.net/" target="_blank" rel="noopener">Anki</a></li>
+                            <li><a href="https://miro.com/" target="_blank" rel="noopener">Miro</a></li>
+                            <li><a href="https://www.grammarly.com/" target="_blank" rel="noopener">Grammarly</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Get Started</h3>
+                        <ul>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="signup.html">Signup</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 StudySmart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Subtle entrance animation and nav highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate section headers
+            const headers = document.querySelectorAll('.technique-header');
+            headers.forEach((el, index) => {
+                el.classList.add('fade-in-up');
+                el.style.animationDelay = `${index * 0.08}s`;
+            });
+
+            // Highlight current technique in quick nav
+            const navLinks = Array.from(document.querySelectorAll('.techniques-nav .nav-link'));
+            const sections = navLinks
+                .map(link => document.querySelector(link.getAttribute('href')))
+                .filter(Boolean);
+            const linkById = new Map(
+                navLinks.map(link => [link.getAttribute('href').slice(1), link])
+            );
+
+            const setActive = (id) => {
+                navLinks.forEach(l => { l.classList.remove('active'); l.removeAttribute('aria-current'); });
+                const link = linkById.get(id);
+                if (link) { link.classList.add('active'); link.setAttribute('aria-current','true'); }
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setActive(entry.target.id);
+                    }
+                });
+            }, { threshold: 0.25, rootMargin: '0px 0px -60% 0px' });
+
+            sections.forEach(sec => observer.observe(sec));
+            // Set initial active based on hash or first section
+            const initialId = (location.hash || '#' + (sections[0]?.id || '')).replace('#','');
+            if (initialId) setActive(initialId);
+        });
+    </script>
+</body>
+</html

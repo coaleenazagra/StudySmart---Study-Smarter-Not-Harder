@@ -1,0 +1,8 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="40" rx="8" fill="#4a6bff"/>
+  <path d="M15 12h10v2H15v-2zm0 4h8v2H15v-2zm0 4h6v2H15v-2z" fill="white"/>
+  <circle cx="32" cy="18" r="6" fill="white" opacity="0.2"/>
+  <path d="M29 18l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="45" y="16" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">StudySmart</text>
+  <text x="45" y="28" font-family="Arial, sans-serif" font-size="8" fill="white" opacity="0.8">Learn Smarter</text>
+</svg>
